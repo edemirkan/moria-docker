@@ -45,6 +45,6 @@ jobs:
       - name: Build and push Docker image
         uses: docker/bake-action@v5.11.0
         with:
-          push: ${{ github.event_name != 'pull_request' }}
+          push: ${{ github.event_name != 'pull_request' && github.ref_name == 'main' }}
         env:
           TAG: ${{ github.ref_name }}
